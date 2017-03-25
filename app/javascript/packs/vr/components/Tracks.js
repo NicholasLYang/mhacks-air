@@ -17,11 +17,11 @@ class Tracks extends BaseComponent {
                     rotation="90 0 0"
                     scale="7.3 2 0"
                     id={"track-" + i.toString()}
-                    material='side:double;color:#f2ffaa;normalScale:NaN'
+                    material='side:double; color:#f2ffaa; normalScale:NaN'
                     geometry='mergeTo:null;primitive:plane' />
-                );
+            );
+            return(<Entity> {tracks} </Entity>);
         }
-        return(<Entity> {tracks} </Entity>);
     }
 }
 export default Tracks;

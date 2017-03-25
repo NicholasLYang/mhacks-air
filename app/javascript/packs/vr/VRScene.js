@@ -113,8 +113,8 @@ class VRScene extends React.Component {
 
             <Entity id="yellow-tracks" position="-30 0.06 2" rotation="90 0 0" scale="1 .4 1" />
 
-            <Plane position="3,3,3"/>
-            <Plane position="0,0,0"/>
+                <Plane position="3,3,3" color="#6438EA"/>
+                <Plane position="0,0,0" color="#6438EA"/>
 
             <Window position="0,0,0" t="-34.64, 30.61, 110.09"
             rotation="0 60 0"
