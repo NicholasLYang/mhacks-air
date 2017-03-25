@@ -1,0 +1,70 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Hello, World! • A-Frame</title>
+        <meta name="description" content="Hello, World! • A-Frame">
+        <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
+        <script src="https://unpkg.com/aframe-animation-component@^3.2.0/dist/aframe-animation-component.min.js"></script>
+        <script
+            src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <a-scene>
+            <a-entity position="0 0 -7.40">
+            <!-- Map Stuff -->
+            <a-box position="0 0 -14" scale="170 1.00 30.36" width="1" height="0.1" depth="1" color="#4CC3D9" material="color:#59aa4a" geometry="mergeTo:null;height:0.1" id="grass"></a-box>
+            <a-box position="0 0 14" scale="170 1 25.66" width="1" height="0.1" depth="1" color="#4CC3D9" material="color:#b0b7b3" geometry="mergeTo:null;height:0.1" id="road"></a-box>
+            <a-entity position="-3 1 5" scale="1 2 4" id="building" geometry="mergeTo:null" material="color:#9bb6ff;normalScale:{&quot;x&quot;:1,&quot;y&quot;:1}"></a-entity>
+            <a-sky color="#ECECEC" position="" scale="" material="shader:flat;color:#82c4ec" geometry="mergeTo:null;primitive:sphere;radius:5000;segmentsHeight:20;segmentsWidth:64"></a-sky>
+            <a-entity id="yellow-tracks" position="-30 0.06 2" rotation="90 0 0" scale="1 .4 1">
+                
+            </a-entity>
+
+            <!-- Airplane Stuff -->
+            <a-entity id="plane"
+                      animation="dir: normal; dur: 5000; from: -100 5 3; property: position; startEvents: start; pauseEvents: pause; resumeEvents: 0; restartEvents: 0; to: 0 5 3"
+                      animation__descend="dir: normal; dur: 5000; from: 0 5 3; property: position; startEvents: animationcomplete; pauseEvents: pause; resumeEvents: 0; restartEvents: 0; to: 3 -3.95 3"
+                      animation__taxi="dir: normal; dur: 5000; from: 3 -3.95 3; property: position; startEvents: taxi; pauseEvents: pause; resumeEvents: 0; restartEvents: 0; to: 100 -3.95 3">
+                <a-entity position="0 5 3" scale="5 1 1" geometry="mergeTo:null" material="color:#ff9120;normalScale:{&quot;x&quot;:1,&quot;y&quot;:1}" id="plane-body"></a-entity>
+                <a-entity position="0 5 3" rotation="90 0 0" scale="1 3 1" id="plane-wings" geometry="mergeTo:null;primitive:plane" material="side:double;color:#ffadad;normalScale:{&quot;x&quot;:1,&quot;y&quot;:1}"></a-entity>
+                <a-entity position="-1.5 4.25 3" rotation="90 0 0" scale="" geometry="mergeTo:null;primitive:cylinder;height:0.25;radius:0.25" material="color:#a5a5a5;normalScale:{&quot;x&quot;:1,&quot;y&quot;:1}" id="wheel-1"></a-entity>
+                <a-entity position="1.5 4.25 3" rotation="90 0 0" scale="" geometry="mergeTo:null;primitive:cylinder;height:0.25;radius:0.25" material="color:#a5a5a5;normalScale:{&quot;x&quot;:1,&quot;y&quot;:1}" id="wheel-2"></a-entity>
+            </a-entity>
+      
+
+            <a-camera position="-0.10 3.19 10.25" rotation="-14.90 -0.11 0" camera="active:false;near:0.01;userHeight:1.6" look-controls="" wasd-controls=""></a-camera>
+            </a-entity>
+        </a-scene>
+        <script>
+
+         //Tracks
+         var tracks = document.getElementById('yellow-tracks');
+         for (var i=0; i<40; i++){
+             var track = document.createElement('a-entity');
+             tracks.appendChild(track);
+             track.setAttribute('position', (i*1.5).toString() + ' 0 0');
+             track.setAttribute('id', "track-" + i.toString());
+             track.setAttribute('material', 'side:double;color:#f2ffaa;normalScale:NaN');
+             track.setAttribute('geometry', 'mergeTo:null;primitive:plane');
+         };
+
+         //Event Listeners
+         $(window).keypress(function(e) {
+             //s
+             if (e.which === 115) {
+                 document.querySelector('#plane').emit('start');
+             };
+             //p
+             if (e.which === 112) {
+                 document.querySelector('#plane').emit('pause');
+             };
+             //t
+             if (e.which === 116) {
+                 document.querySelector('#plane').emit('taxi');
+             };
+         });
+        </script>
+    </body>
+</html>
