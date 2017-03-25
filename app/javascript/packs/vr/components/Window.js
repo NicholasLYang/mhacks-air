@@ -13,7 +13,9 @@ class Window extends BaseComponent {
                 <Entity position={this.translate(this.props, trans)}
             scale={this.props.scale}
             rotation={this.props.rotation}
-            material="opacity:0.5;color:#aaceff;normalScale:{&quot;x&quot;:1,&quot;y&quot;:1}"
+            color={this.props.color}
+            geometry="mergeTo:null;primitive:plane"
+            material={"side:double;opacity:0.5;color:" + color + ";normalScale:{&quot;x&quot;:1,&quot;y&quot;:1}"}
             id={this.props.id} />
         );
     }

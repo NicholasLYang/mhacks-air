@@ -118,11 +118,38 @@ class VRScene extends React.Component {
 
             <Window position="0,0,0" t="-34.64, 30.61, 110.09"
             rotation="0 60 0"
-            scale="39.03, 30, 56.11"
+            scale="39.03 30 56.11"
+            color="#aaceff"
             id="left-window"/>
 
+                <Window position="0,0,0" t="-8, 30.61, 93.01"
+            rotation="0 0 0"
+            scale="34 30 56.11"
+            id="middle-window"/>
+
+                <Window position="0,0,0" t="18.7,30.61,110.09"
+            rotation="0 300 0"
+            scale="39.03 30 56.11"
+            id="right-window"/>
+
+                <Window position="0,0,0" t="-8.08,15.61,126.84"
+            rotation="0 0 0"
+            scale="73 60 100"
+            id="back-window"/>
+
+                <Window position="0,0,0" t="-7.42,45.39,109.29"
+            rotation="90 0 0"
+            scale="75.43 34.92 46.21"
+            id="top-window"/>
+
+                <Window position="0,0,0" t="-12,15.25,110.32"
+            rotation="90 0 0"
+            scale="75.43 34.92 46.21"
+            id="bottom-window"/>
+
+
             <Entity primitive="a-camera"
-            position="-.1 31.6 116.44"
+            position="-8.27 31.6 116.44"
             rotation="0 0 0"
             camera="active:false;near:0.01;userHeight:1.6"
             look-controls="" wasd-controls="" />
