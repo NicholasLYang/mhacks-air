@@ -2,8 +2,9 @@ import 'aframe';
 import {Entity, Scene} from 'aframe-react';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import BaseComponent from './BaseComponent.js';
 
-class Tracks extends React.Component {
+class Tracks extends BaseComponent {
 
     render() {
         var tracks = [];
@@ -11,15 +12,17 @@ class Tracks extends React.Component {
         for (var i=0; i< TRACKS_NUM; i++){
             tracks.push(
                 <Entity
-                key={i}
-                position={(i*1.5).toString() + ' 0 0'}
-                scale=""
-                id={"track-" + i.toString()}
-                material="side:double;ambientOcclusionTextureRepeat:{&quot;x&quot;:0,&quot;y&quot;:1};color:#ffff00;normalScale:{&quot;x&quot;:null}"
-                geometry='mergeTo:null:' />
-                );
+
+                    key={i}
+                    position={(i*10).toString() + ' 0.06 0'}
+                    rotation="90 0 0"
+                    scale="7.3 2 0"
+                    id={"track-" + i.toString()}
+                    material='side:double; color:#f2ffaa; normalScale:NaN'
+                    geometry='mergeTo:null;primitive:plane' />
+            );
+            return(<Entity> {tracks} </Entity>);
         }
-        return(<Entity> {tracks} </Entity>);
     }
 }
 export default Tracks;

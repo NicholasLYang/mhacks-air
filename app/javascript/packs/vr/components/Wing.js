@@ -2,37 +2,61 @@ import 'aframe';
 import {Entity, Scene} from 'aframe-react';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import BaseComponent from './BaseComponent.js';
 
-class Wing extends React.Component {
+class Wing extends BaseComponent {
+
     constructor(props) {
         super(props);
-        AFRAME.registerGeometry('triangle', {
-            schema: {
-                vertices: {
-                    default: ['-3 5 3', '0 5 5', '0 5 1'],
-                }
-            },
-            init: function (data) {
-                var geometry = new THREE.Geometry();
-                geometry.vertices.push.call(
-                    geometry.vertices,
-                    data.vertices.map(function (vertex) {
-                        var points = vertex.split(' ').map(parseInt);
-                        return new THREE.Vector3(points[0], points[1], points[2]);
-                    })
-                );
-                geometry.faces.push(new THREE.Face3(0, 1, 2));
-                this.geometry = geometry;
-            }
-        });
+        this.render = this.render.bind(this);
     }
 
     render() {
         return (
-                <Entity geometry="primitive: triangle"
-            id="triangle"/>
+            <Entity>
+            <Entity
+            position={this.translate(this.props, [1, 4.6, 3])}
+            rotation="90 0 0"
+            scale="1 10 1"
+            id="plane-wings"
+            geometry="mergeTo:null;depth:0.1"
+            material="side:double;color:#0d4cff;normalScale:{&quot;x&quot;:null}"/>
+            <Entity
+            position={this.translate(this.props, [1, 5.4, 3])}
+            rotation="90 0 0"
+            scale="1 10 1"
+            id="plane-wings"
+            geometry="mergeTo:null;depth:0.1"
+            material="side:double;color:#0d4cff;normalScale:{&quot;x&quot;:null}"/>
+
+                <Entity>
+                <Entity primitive="a-cylinder"
+            position={this.translate(this.props, [1.35, 5, 7.75])}
+            geometry="radius: 0.05" />
+
+                <Entity primitive="a-cylinder"
+            position={this.translate(this.props, [1.35, 5, -1.75])}
+            geometry="radius: 0.05" />
+                <Entity primitive="a-cylinder"
+            position={this.translate(this.props, [0.65, 5, 7.75])}
+            geometry="radius: 0.05" />
+
+                <Entity primitive="a-cylinder"
+            position={this.translate(this.props, [0.65, 5, -1.75])}
+            geometry="radius: 0.05" />
+                </Entity>
+
+                <Entity primitive="a-box"
+            position={this.translate(this.props, [-2.5, 5.35, 3])}
+            rotation="0 0 45"
+            scale="1.5 1.5 0.1"
+                />
+
+                </Entity>
+
         );
-    }
-}
+    };
+
+};
 
 export default Wing;
