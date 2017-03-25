@@ -11,12 +11,12 @@ class Tracks extends React.Component {
         for (var i=0; i< TRACKS_NUM; i++){
             tracks.push(
                 <Entity
-                    key={i}
-                    position={(i*1.5).toString() + ' 0 0'}
-                    
-                    id={"track-" + i.toString()}
-                    material='side:double;color:#f2ffaa;normalScale:NaN'
-                    geometry='mergeTo:null;primitive:plane' />
+                key={i}
+                position={(i*1.5).toString() + ' 0 0'}
+                scale=""
+                id={"track-" + i.toString()}
+                material="side:double;ambientOcclusionTextureRepeat:{&quot;x&quot;:0,&quot;y&quot;:1};color:#ffff00;normalScale:{&quot;x&quot;:null}"
+                geometry='mergeTo:null:' />
                 );
         }
         return(<Entity> {tracks} </Entity>);
