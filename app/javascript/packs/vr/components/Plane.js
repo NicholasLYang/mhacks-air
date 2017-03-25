@@ -11,13 +11,6 @@ class Plane extends BaseComponent {
     render() {
 
         return (
-            /*
-               <div>
-               <input type="text" id="testing1" onKeyPress={this.move} />
-               <input type="text" id="testing2" onKeyPress={this.land} />
-               <input type="text" id="testing3" onKeyPress={this.taxi} />
-               </div>
-             */
             <Entity id="plane"
             scale="11 11 11"
             animation="dir: normal;
@@ -47,14 +40,20 @@ class Plane extends BaseComponent {
             restartEvents: 0;
             to: 100 -3.95 3">
 
-            <Wing position={this.props.position}/>
+                <Wing position={this.props.position}
+                      color={this.props.color}/>
 
-            <Body position={this.props.position}/>
+                <Body position={this.props.position}
+                      color={this.props.color}/>
 
 
-            <Wheel position={this.props.position} id="wheel-1" />
+                <Wheel position={this.props.position}
+                       id="wheel-1"
+                       color={this.props.color}/>
 
-            <Wheel position={this.props.position} id="wheel-2" />
+                <Wheel position={this.props.position}
+                       id="wheel-2"
+                       color={this.props.color} />
 
             </Entity>
         )

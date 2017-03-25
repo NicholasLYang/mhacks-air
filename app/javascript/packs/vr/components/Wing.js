@@ -19,7 +19,7 @@ class Wing extends BaseComponent {
             scale="1 10 1"
             id="plane-wings"
             geometry="mergeTo:null;depth:0.1"
-            material="side:double;color:#7bea40;normalScale:{&quot;x&quot;:null}"/>
+            material="side:double;color:#0d4cff;normalScale:{&quot;x&quot;:null}"/>
         );
     };
 

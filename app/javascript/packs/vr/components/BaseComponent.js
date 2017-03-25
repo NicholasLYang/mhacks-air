@@ -15,6 +15,7 @@ class BaseComponent extends React.Component {
         var sum = abs.map(function (num, i) {
             return parseInt(num) + parseInt(t[i]);
         });
+
         return sum.join(" ");
     }
 }
