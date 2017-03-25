@@ -7,7 +7,8 @@ set :repo_url, "git@github.com:NicholasLYang/mhacks-air.git"
 
 set :deploy_to, '/home/deploy/AirAlexa'
 
-append :linked_files, "config/database.yml", "config/secrets.yml"
+append :linked_files, "config/database.yml", "config/secrets.yml", "config/local_env.yml"
+
 append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "vendor/bundle", "public/system", "public/uploads"
 
 # Default branch is :master
