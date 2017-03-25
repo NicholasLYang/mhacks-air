@@ -3,6 +3,7 @@ import {Entity, Scene} from 'aframe-react';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Plane from './components/Plane';
+import Window from './components/Window.js';
 import Tracks from './components/Tracks';
 
 class VRScene extends React.Component {
@@ -114,6 +115,11 @@ class VRScene extends React.Component {
 
             <Plane position="3,3,3"/>
             <Plane position="0,0,0"/>
+
+            <Window position="0,0,0" t="-34.64, 30.61, 110.09"
+            rotation="0 60 0"
+            scale="39.03, 30, 56.11"
+            id="left-window"/>
 
             <Entity primitive="a-camera"
             position="-.1 31.6 116.44"

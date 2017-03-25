@@ -11,7 +11,7 @@ class Wing extends BaseComponent {
         this.render = this.render.bind(this);
     }
 
-    render() {
+    render() { 
         return (
             <Entity
             position={this.translate(this.props,[0,5,3])}
