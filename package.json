@@ -1,11 +1,23 @@
 {
   "name": "mhacks-air",
   "private": true,
-  "dependencies": {},
+  "dependencies": {
+    "aframe": "^0.5.0",
+    "aframe-animation-component": "^3.2.5",
+    "aframe-bmfont-text-component": "^0.1.4",
+    "aframe-react": "^3.5.0",
+    "aframe-text-component": "^0.4.2",
+    "aframe-text-geometry-component": "^0.5.1",
+    "babel-polyfill": "^6.23.0",
+    "bootstrap": "^3.3.7",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2"
+  },
   "devDependencies": {
     "babel-core": "^6.24.0",
     "babel-loader": "^6.4.1",
     "babel-preset-latest": "^6.24.0",
+    "babel-preset-react": "^6.23.0",
     "coffee-loader": "^0.7.3",
     "coffee-script": "^1.12.4",
     "glob": "^7.1.1",
