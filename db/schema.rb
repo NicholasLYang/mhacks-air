@@ -10,12 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170326033442) do
+ActiveRecord::Schema.define(version: 20170326144537) do
 
-  create_table "commands", force: :cascade do |t|
-    t.string "action"
+# Could not dump table "commands" because of following StandardError
+#   Unknown type 'id' for column 'plane'
+
+  create_table "planes", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "action"
   end
 
 end

@@ -1,0 +1,38 @@
+console.log('GW1');
+
+var https = require('https');
+
+var jason = {
+    message: {
+        "name": "Jason Kao"
+    }
+}
+
+exports.handler = function(event, context) {
+
+    var body='';
+    var jsonObject = JSON.stringify(jason);
+
+    // the post options
+    var optionspost = {
+        host: '2c5d51ae.ngrok.io',
+        port: 3000,
+        path: '/',
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    };
+
+    var reqPost = https.request(optionspost, function(res) {
+        console.log("statusCode: ", res.statusCode);
+        res.on('data', function (chunk) {
+            body += chunk;
+        });
+        context.succeed('Blah');
+    });
+
+    reqPost.write(jsonObject);
+    reqPost.end();
+    context.done();
+};
