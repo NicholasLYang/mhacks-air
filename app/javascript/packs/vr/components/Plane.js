@@ -32,16 +32,16 @@ class Plane extends BaseComponent {
             <Body position={this.props.position}
             color={this.props.color}/>
 
-            <Wheel position={this.props.position}
+            <Wheel position={this.props.position}i
             id="wheel-1"
             color={this.props.color}/>
 
             <Wheel position={this.props.position}
             id="wheel-2"
             color={this.props.color}/>
-                </Entity>
-                
-                </Entity>
+            </Entity>
+
+            </Entity>
         );
     }
 
@@ -70,7 +70,7 @@ var circling = function(x, z, r){
     var theta = 0;
     var cx = x + r;
     var cz = z;
-    var step = 15.0 * (Math.PI/180);
+    var step = 15 * (Math.PI/180);
     var curve_points = []
     for(theta; theta < 2 * Math.PI; theta += step){
         var x1 = cx + r * Math.cos(theta);
@@ -86,4 +86,3 @@ var circling = function(x, z, r){
     }
     return(<Entity id="circle" primitive="a-curve"> {curve_points} </Entity>);
 }
-

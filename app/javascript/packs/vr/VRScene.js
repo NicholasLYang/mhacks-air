@@ -6,7 +6,6 @@ import Plane from './components/Plane';
 import Window from './components/Window.js';
 import Wall from './components/Wall.js';
 import Tracks from './components/Tracks';
-import Scenery from './components/Scenery';
 
 class VRScene extends React.Component {
 
@@ -15,10 +14,6 @@ class VRScene extends React.Component {
         return (
             <Scene>
             <Entity position="0 0 -7.40">
-                <Scenery />
-
-                <Plane position="3 3 3" color="#6438EA"/>
-                <Plane position="0 0 0" color="#6438EA"/>
 
 
             <Window position="0 0 0" t="-34.64, 30.61, 110.09" />
@@ -113,7 +108,6 @@ class VRScene extends React.Component {
             scale="-1 1 1"
             material="shader:flat;color:#82c4ec"
             geometry="mergeTo:null;primitive:sphere;radius:5000;segmentsHeight:20;segmentsWidth:64" />
-            
 
             /*
             <Entity primitive='a-sky'
@@ -124,15 +118,22 @@ class VRScene extends React.Component {
             */
 
             <Entity id="yellow-tracks" position="-30 0.06 2" rotation="90 0 0" scale="1 .4 1" />
-
-            spawnPlane();
-
-            <Window position="0,0,0" t="-34.64, 30.61, 110.09"
+            /*    
+            <Entity>
+            {spawnPlane()}
+            </Entity>
+            */
+                <Window position="0,0,0" t="-34.85, 30.61, 110.09"
             rotation="0 60 0"
             scale="39.03 30 56.11"
             id="left-window"/>
 
-                <Window position="0 0 0" t="-8, 30.61, 93.01"
+                <Window position="0 0 0" t="-34.78, 30.61, 110.09"
+            rotation="0 60 0"
+            scale="39 30 56.11"
+            id="left-window"/>
+
+                <Window position="0 0 0" t="-8, 30.61, 93.34"
             rotation="0 0 0"
             scale="34 30 56.11"
             id="middle-window"/>
@@ -177,16 +178,13 @@ export default VRScene;
 
 var planes = 0;
 
-var timer = setInterval(spawnPlane, 5000);
-
 var spawnPlane = function(){
-    console.log("new plane");
     planes+=1;
     var x,z;
     var rand = [-200,200,120,-120];
     var r = rand[Math.floor(Math.random() * rand.length)];
-    var y = Math.floor(Math.random() * 201 + 200);
-    if (r == -200 || r == 200){       
+    var y = Math.floor(Math.random() * 51 + 50);
+    if (r == -200 || r == 200){
         x = r;
         z = Math.floor(Math.random() * 241 - 120);
     } else if (r == 120 || r == -120){
@@ -196,7 +194,6 @@ var spawnPlane = function(){
     return (<Plane position={x.toString() + ' ' + y.toString() + ' ' + z.toString()} color="#6438EA" id={"plane-" + (planes).toString()}/>);
 };
 
-console.log(spawnPlane());
 
 
 
