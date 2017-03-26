@@ -7,5 +7,5 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 for i in 0..20
-  planes = Plane.create({});
+  planes = Plane.create({action: 0});
 end
