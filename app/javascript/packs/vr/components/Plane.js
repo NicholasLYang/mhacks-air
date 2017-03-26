@@ -8,6 +8,7 @@ import ReactDOM from 'react-dom';
 import Wheel from './Wheel';
 import Body from './Body';
 import Wing from './Wing';
+import Props from './Props';
 import BaseComponent from './BaseComponent.js';
 
 class Plane extends BaseComponent {
@@ -20,28 +21,23 @@ class Plane extends BaseComponent {
     render() {
         return (
             <Entity>
-            <Entity id="circle" primitive="a-curve">
-            <Curve-Point position="-50 1 -3" geometry="primitive:box; height:0.1; width:0.1; depth:0.1" material="color:#ff0000" />
-            <Curve-Point position="50 1 3" geometry="primitive:box; height:0.1; width:0.1; depth:0.1" material="color:#ff0000" />
-            </Entity>
-            <Draw-Curve curveref="#circle" material="shader: line; color: blue;"/>
-            <Entity id = "plane"
-            alongpath="path:circle; closed: false; dur: 5000; delay: 4000; startEvents: start">
+            {circling(40,40,10)}
+            <Entity id = {this.props.id}
+            alongpath="curve:#circle; trigger: hold; loop:true; closed:false; inspect:true;">
 
             <Wing position={this.props.position}
-            color={this.props.color} />
-
-                <Body position={this.props.position}
             color={this.props.color}/>
 
+            <Body position={this.props.position}
+            color={this.props.color}/>
 
-                <Wheel position={this.props.position}
+            <Wheel position={this.props.position}
             id="wheel-1"
             color={this.props.color}/>
 
-                <Wheel position={this.props.position}
+            <Wheel position={this.props.position}
             id="wheel-2"
-            color={this.props.color} />
+            color={this.props.color}/>
 
             </Entity>
             </Entity>
@@ -67,24 +63,25 @@ class Plane extends BaseComponent {
     }
 }
 
-var circle = function(curX, curY, r){
-    
-}
-
-// Add an event listener
-/*
-document.onkeypress = function(evt){
-    evt = evt;
-    var charCode = evt.keyCode;
-    if (charCode === 104){
-        var event = new CustomEvent("start",{
-            detail:{
-                holding: true
-            }
-        });
-        document.dispatchEvent(event);
-        console.log("succeed");
-    }
-};
-*/
 export default Plane;
+
+var circling = function(x, z, r){
+    var theta = 0;
+    var cx = x + r;
+    var cz = z;
+    var step = 15.0 * (Math.PI/180);
+    var curve_points = []
+    for(theta; theta < 2 * Math.PI; theta += step){
+        var x1 = cx + r * Math.cos(theta);
+        var z1 = cz - r * Math.sin(theta);
+        curve_points.push(
+            <Entity primitive="a-curve-point"
+            key={(theta)}
+            id={"checkpoint-" + (theta).toString()}
+            position={x1.toString() + ' 10 ' +  z1.toString()}
+            geometry="primitive:box; height:0.1; width:0.1; depth:0.1"
+            material="color:#ff0000"/>
+        )
+    }
+    return(<Entity id="circle" primitive="a-curve"> {curve_points} </Entity>);
+}

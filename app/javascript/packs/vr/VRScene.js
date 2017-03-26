@@ -122,8 +122,8 @@ class VRScene extends React.Component {
 
             <Entity id="yellow-tracks" position="-30 0.06 2" rotation="90 0 0" scale="1 .4 1" />
 
-                <Plane position="3,3,3" color="#6438EA"/>
-                <Plane position="0,0,0" color="#6438EA"/>
+            <Plane position="3,3,3" color="#6438EA" id="1"/>
+            <Plane position="0,0,0" color="#6438EA" id="2"/>
 
             <Window position="0,0,0" t="-34.64, 30.61, 110.09"
             rotation="0 60 0"
@@ -172,15 +172,3 @@ class VRScene extends React.Component {
 }
 
 export default VRScene;
-
-function makeTracks() {
-    var tracks = document.getElementById('yellow-tracks');
-     for (var i=0; i<40; i++){
-         var track = document.createElement('a-entity');
-         tracks.appendChild(track);
-         track.setAttribute('position', (i*1.5).toString() + ' 0 0');
-         track.setAttribute('id', "track-" + i.toString());
-         track.setAttribute('material', 'side:double;color:#f2ffaa;normalScale:NaN');
-         track.setAttribute('geometry','mergeTo:null;primitive:plane');
-     }
-}

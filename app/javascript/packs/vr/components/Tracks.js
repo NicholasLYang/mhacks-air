@@ -12,6 +12,7 @@ class Tracks extends BaseComponent {
         for (var i=0; i< TRACKS_NUM; i++){
             tracks.push(
                 <Entity
+
                     key={i}
                     position={(i*10).toString() + ' 0.06 0'}
                     rotation="90 0 0"
@@ -20,8 +21,8 @@ class Tracks extends BaseComponent {
                     material='side:double; color:#f2ffaa; normalScale:NaN'
                     geometry='mergeTo:null;primitive:plane' />
             );
-            return(<Entity> {tracks} </Entity>);
         }
+        return(<Entity> {tracks} </Entity>);
     }
 }
 export default Tracks;
