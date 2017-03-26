@@ -8,7 +8,7 @@ class Tracks extends BaseComponent {
 
     render() {
         var tracks = [];
-        const TRACKS_NUM = 40;
+        const TRACKS_NUM = 6;
         for (var i=0; i< TRACKS_NUM; i++){
             tracks.push(
                 <Entity
