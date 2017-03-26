@@ -1,0 +1,31 @@
+// if you add this back, don't forget to add back the intent conditional AirplaneStatusIntent.
+
+function createAirplaneAttributes(airplane) {
+    return {
+        airplane,
+    }
+}
+
+function getAirplaneStatusFromSession(intent, session, callback) {
+    const cardTitle = intent.name;
+    const airplaneSlot = intent.slots.Number;
+    let repromptText = '';
+    let sessionAttributes = {};
+    const shouldEndSession = false;
+    let speechOutput = '';
+
+    if (airplaneSlot) {
+        const airplane = airplaneSlot.value;
+        sessionAttributes = createAirplaneAttributes(airplane);
+        speechOutput = `Airplane ${airplane} has a status Jason Kao needs to assign. You can get the ` +
+            "status of all airplanes by saying, give me a full status report.";
+        repromptText = "You can get the status of all airplanes by saying, give me a full status report.";
+    } else {
+        speechOutput = "There is no airplane with that airplane number. Please try again.";
+        repromptText = "There is no airplane with that airplane number. You can get the status of " +
+            'all airplanes by saying, give me a full status report.';
+    }
+
+    callback(sessionAttributes,
+         buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
+}
