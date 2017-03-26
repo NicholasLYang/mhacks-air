@@ -24,7 +24,7 @@ class Plane extends BaseComponent {
             <Entity primitive="a-curve-point" position="0 0 70"/>
             {circling(40,40,30)}
             <Entity id = {this.props.id}
-            alongpath="curve:#circle; trigger: ; loop:true; closed:false; inspect:true;">
+            alongpath="curve:#circle; trigger: hold; loop:true; closed:false; inspect:true;" >
 
             <Wing position={this.props.position}
             color={this.props.color}/>
@@ -39,9 +39,9 @@ class Plane extends BaseComponent {
             <Wheel position={this.props.position}
             id="wheel-2"
             color={this.props.color}/>
-
-            </Entity>
-            </Entity>
+                </Entity>
+                
+                </Entity>
         );
     }
 

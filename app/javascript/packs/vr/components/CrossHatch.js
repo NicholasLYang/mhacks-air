@@ -19,8 +19,6 @@ class CrossHatch extends BaseComponent {
             position={this.translate(this.props, [0.65, 5, 0.75])}
             rotation="135 0 0"
             geometry="radius: 0.05" />
-
-       
                 </Entity>
         );
     }

@@ -1,27 +1,23 @@
 import 'aframe';
+import 'aframe-mountain-component';
 import {Entity, Scene} from 'aframe-react';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Plane from './components/Plane';
-import Window from './components/Window.js';
-import Wall from './components/Wall.js';
-import Tracks from './components/Tracks';
-import Scenery from './components/Scenery';
+import BaseComponent from './BaseComponent.js';
 
-class VRScene extends React.Component {
 
-    render () {
 
+class Scenery extends BaseComponent {
+
+
+    render() {
         return (
-            <Scene>
-            <Entity position="0 0 -7.40">
-                <Scenery />
-
-                <Plane position="3 3 3" color="#6438EA"/>
-                <Plane position="0 0 0" color="#6438EA"/>
-
-
-            <Window position="0 0 0" t="-34.64, 30.61, 110.09" />
+                <Entity>
+            <Entity primitive='a-entity'
+            position="-30 .1 2.0"
+            rotation="90 0 0"
+            scale="1 .3 1"
+            id="yellow-tracks" />
 
             <Entity primitive='a-box'
             position="0 0 0"
@@ -113,91 +109,16 @@ class VRScene extends React.Component {
             scale="-1 1 1"
             material="shader:flat;color:#82c4ec"
             geometry="mergeTo:null;primitive:sphere;radius:5000;segmentsHeight:20;segmentsWidth:64" />
-            
 
-            /*
-            <Entity primitive='a-sky'
-            color="#AAB"
-            scale="-1 1 1"
-            material="shader:flat;color:#AAB"
-            geometry="mergeTo:null;primitive:sphere;radius:5000;segmentsHeight:20;segmentsWidth:64"/>
-            */
-
-            <Entity id="yellow-tracks" position="-30 0.06 2" rotation="90 0 0" scale="1 .4 1" />
-
-            spawnPlane();
-
-            <Window position="0,0,0" t="-34.64, 30.61, 110.09"
-            rotation="0 60 0"
-            scale="39.03 30 56.11"
-            id="left-window"/>
-
-                <Window position="0 0 0" t="-8, 30.61, 93.01"
-            rotation="0 0 0"
-            scale="34 30 56.11"
-            id="middle-window"/>
-
-                <Window position="0 0 0" t="18.7,30.61,110.09"
-            rotation="0 300 0"
-            scale="39.03 30 56.11"
-            id="right-window"/>
-
-                <Wall position="0 0 0" t="-8.08,15.61,126.84"
-            rotation="0 0 0"
-            scale="73 60 100"
-            id="back-wall"/>
-
-                <Wall position="0 0 0" t="-7.42,45.39,109.29"
+                <Entity id="yellow-tracks"
+            position="-30 0.06 2"
             rotation="90 0 0"
-            scale="75.43 34.92 46.21"
-            id="top-wall"/>
-
-                <Wall position="0 0 0" t="-12,15.25,110.32"
-            rotation="90 0 0"
-            scale="75.43 34.92 46.21"
-            id="bottom-wall"/>
+            scale="1 .4 1" />
 
 
-            <Entity primitive="a-camera"
-            position="-8.27 31.6 116.44"
-            rotation="0 0 0"
-            camera="active:true;near:0.01;userHeight:1.6"
-            look-controls="" wasd-controls="" />
-
-            <Tracks />
-
-            </Entity>
-            </Scene>
+                </Entity>
         );
-
     }
 }
 
-export default VRScene;
-
-var planes = 0;
-
-var timer = setInterval(spawnPlane, 5000);
-
-var spawnPlane = function(){
-    console.log("new plane");
-    planes+=1;
-    var x,z;
-    var rand = [-200,200,120,-120];
-    var r = rand[Math.floor(Math.random() * rand.length)];
-    var y = Math.floor(Math.random() * 201 + 200);
-    if (r == -200 || r == 200){       
-        x = r;
-        z = Math.floor(Math.random() * 241 - 120);
-    } else if (r == 120 || r == -120){
-        x = Math.floor(Math.random() * 401 - 200);
-        z = r;
-    }
-    return (<Plane position={x.toString() + ' ' + y.toString() + ' ' + z.toString()} color="#6438EA" id={"plane-" + (planes).toString()}/>);
-};
-
-console.log(spawnPlane());
-
-
-
-
+export default Scenery;
