@@ -20,27 +20,26 @@ class Plane extends BaseComponent {
 
     render() {
         return (
-            <Entity>
-            <Entity primitive="a-curve-point" position="0 0 70"/>
-            {circling(40,40,30)}
-            <Entity id = {this.props.id}
-            alongpath="curve:#circle; trigger: hold; loop:true; closed:false; inspect:true;" >
+                <Entity>
+                <Entity primitive="a-curve-point" position="0 0 70"/>
+                {circling(40,40,50)}
+                <Entity id = {this.props.id} scale="5 5 5"
+            alongpath="curve:#circle; trigger: hold; loop:true; rotate: false; closed:false; dur:5000; inspect:true;" >
 
-            <Wing position={this.props.position}
+                <Wing position={this.props.position}
             color={this.props.color}/>
 
-            <Body position={this.props.position}
+                <Body position={this.props.position}
             color={this.props.color}/>
 
-            <Wheel position={this.props.position}i
+                <Wheel position={this.props.position}
             id="wheel-1"
             color={this.props.color}/>
 
-            <Wheel position={this.props.position}
+                <Wheel position={this.props.position}
             id="wheel-2"
             color={this.props.color}/>
-            </Entity>
-
+                </Entity>
             </Entity>
         );
     }

@@ -144,6 +144,7 @@ class VRScene extends React.Component {
             scale="75.43 34.92 46.21"
             id="bottom-wall"/>
 
+                <Plane position="3 3 3" color="#FFF" id="plane" />
 
             <Entity primitive="a-camera"
             position="-8.27 31.6 116.44"
@@ -151,10 +152,11 @@ class VRScene extends React.Component {
             camera="active:true;near:0.01;userHeight:1.6"
             look-controls="" wasd-controls="" />
 
-            <Tracks />
-
-            </Entity>
-            </Scene>
+                <Entity id="tracks" position="-153 0 23.39" scale="6 5.78 5.78">
+                <Tracks />
+                </Entity>    
+                </Entity>
+                </Scene>
         );
 
     }
