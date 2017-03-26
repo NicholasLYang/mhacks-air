@@ -9,7 +9,8 @@ class CommandController < ApplicationController
 
   def current
     @command = Command.first
-    Command.destroy(1)
+    id = @command[:id]
+    Command.destroy(id)
     render :json => @command
   end
 

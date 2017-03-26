@@ -5,7 +5,7 @@ set :application, "AirAlexa"
 set :repo_url, "git@github.com:NicholasLYang/mhacks-air.git"
 
 set :user, 'deploy'
-set :deploy_to, '/home/deploy/AirAlexa'
+set :deploy_to, '/home/deploy/airalexa'
 set :use_sudo, true
 
 append :linked_files, "config/database.yml", "config/secrets.yml", "config/local_env.yml"
