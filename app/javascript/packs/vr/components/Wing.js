@@ -3,6 +3,7 @@ import {Entity, Scene} from 'aframe-react';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import BaseComponent from './BaseComponent.js';
+import WingStructs from './WingStructs';
 
 class Wing extends BaseComponent {
 
@@ -29,29 +30,13 @@ class Wing extends BaseComponent {
             geometry="mergeTo:null;depth:0.1"
             material="side:double;color:#0d4cff;normalScale:{&quot;x&quot;:null}"/>
 
-                <Entity>
-                <Entity primitive="a-cylinder"
-            position={this.translate(this.props, [1.35, 5, 7.75])}
-            geometry="radius: 0.05" />
-
-                <Entity primitive="a-cylinder"
-            position={this.translate(this.props, [1.35, 5, -1.75])}
-            geometry="radius: 0.05" />
-                <Entity primitive="a-cylinder"
-            position={this.translate(this.props, [0.65, 5, 7.75])}
-            geometry="radius: 0.05" />
-
-                <Entity primitive="a-cylinder"
-            position={this.translate(this.props, [0.65, 5, -1.75])}
-            geometry="radius: 0.05" />
-                </Entity>
-
                 <Entity primitive="a-box"
             position={this.translate(this.props, [-2.5, 5.35, 3])}
             rotation="0 0 45"
             scale="1.5 1.5 0.1"
                 />
 
+                <WingStructs position={this.props.position} />
                 </Entity>
 
         );
