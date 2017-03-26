@@ -11,7 +11,7 @@ class BaseComponent extends React.Component {
 
     translate(props, abs) {
         var position = props.position;
-        var t = position.split(",");
+        var t = position.split(" ");
         var sum = abs.map(function (num, i) {
             return parseFloat(num) + parseFloat(t[i]);
         });

@@ -1,5 +1,7 @@
 import 'aframe';
 import 'aframe-animation-component';
+import 'aframe-alongpath-component';
+import 'aframe-curve-component';
 import {Entity, Scene} from 'aframe-react';
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -12,15 +14,17 @@ import BaseComponent from './BaseComponent.js';
 class Plane extends BaseComponent {
     constructor(props) {
         super(props);
-        this.state = {};
+        this.componentDidMount = this.componentDidMount.bind(this);
+        this.setState({position: this.props.position});
     }
 
     render() {
-
         return (
-                <Entity id = "plane"
-            animation__descend="dir: normal; dur: 5000; from: 0 9 0; property: position; startEvents: start; to: 0 0 0"
-            animation__hold="dir: alternate; dur: 10000; easing: easeInOutCirc; from: 100 9 0; property: position; startEvents: hold; loop: true; to: 0 9 0">
+                <Entity>
+                <Entity primitive="a-curve-point" position="0 0 70"/>
+                {circling(40,40,50)}
+                <Entity id = {this.props.id} scale="5 5 5"
+            alongpath="curve:#circle; trigger: hold; loop:true; rotate: false; closed:false; dur:5000; inspect:true;" >
 
                 <Wing position={this.props.position}
             color={this.props.color}/>
@@ -28,22 +32,19 @@ class Plane extends BaseComponent {
                 <Body position={this.props.position}
             color={this.props.color}/>
 
-
                 <Wheel position={this.props.position}
             id="wheel-1"
             color={this.props.color}/>
 
                 <Wheel position={this.props.position}
             id="wheel-2"
-            color={this.props.color} />
-
-                <Props position={this.props.position} />
-
+            color={this.props.color}/>
+                </Entity>
             </Entity>
         );
     }
 
-componentDidMount() {
+    componentDidMount() {
         //Event Listeners
         $(window).keypress(function(e) {
             //s
@@ -62,5 +63,25 @@ componentDidMount() {
     }
 }
 
-
 export default Plane;
+
+var circling = function(x, z, r){
+    var theta = 0;
+    var cx = x + r;
+    var cz = z;
+    var step = 15 * (Math.PI/180);
+    var curve_points = []
+    for(theta; theta < 2 * Math.PI; theta += step){
+        var x1 = cx + r * Math.cos(theta);
+        var z1 = cz - r * Math.sin(theta);
+        curve_points.push(
+            <Entity primitive="a-curve-point"
+            key={(theta)}
+            id={"checkpoint-" + (theta).toString()}
+            position={x1.toString() + ' 10 ' +  z1.toString()}
+            geometry="primitive:box; height:0.1; width:0.1; depth:0.1"
+            material="color:#ff0000"/>
+        )
+    }
+    return(<Entity id="circle" primitive="a-curve"> {curve_points} </Entity>);
+}

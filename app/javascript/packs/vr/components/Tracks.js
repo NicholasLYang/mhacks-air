@@ -8,7 +8,7 @@ class Tracks extends BaseComponent {
 
     render() {
         var tracks = [];
-        const TRACKS_NUM = 40;
+        const TRACKS_NUM = 6;
         for (var i=0; i< TRACKS_NUM; i++){
             tracks.push(
                 <Entity
@@ -21,8 +21,8 @@ class Tracks extends BaseComponent {
                     material='side:double; color:#f2ffaa; normalScale:NaN'
                     geometry='mergeTo:null;primitive:plane' />
             );
-            return(<Entity> {tracks} </Entity>);
         }
+        return(<Entity> {tracks} </Entity>);
     }
 }
 export default Tracks;

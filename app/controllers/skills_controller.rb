@@ -5,9 +5,10 @@ class SkillsController < ApplicationController
     @command = Command.new(params.require(:command)
                              .permit(:action))
     @command.save
+    p params.inspect
   end
 
-  def index_current
+  def current
     @commands = Command.order("created_on DESC")..first
   end
 end
