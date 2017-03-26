@@ -21,9 +21,10 @@ class Plane extends BaseComponent {
     render() {
         return (
             <Entity>
-            {circling(40,40,10)}
+            <Entity primitive="a-curve-point" position="0 0 70"/>
+            {circling(40,40,30)}
             <Entity id = {this.props.id}
-            alongpath="curve:#circle; trigger: hold; loop:true; closed:false; inspect:true;">
+            alongpath="curve:#circle; trigger: ; loop:true; closed:false; inspect:true;">
 
             <Wing position={this.props.position}
             color={this.props.color}/>
@@ -85,3 +86,4 @@ var circling = function(x, z, r){
     }
     return(<Entity id="circle" primitive="a-curve"> {curve_points} </Entity>);
 }
+
