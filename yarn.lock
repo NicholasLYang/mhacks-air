@@ -23,6 +23,13 @@ acorn@^4.0.3, acorn@^4.0.4:
   version "4.0.11"
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-4.0.11.tgz#edcda3bd937e7556410d42ed5860f67399c794c0"
 
+aframe-alongpath-component@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/aframe-alongpath-component/-/aframe-alongpath-component-1.0.3.tgz#89de4108b05339dfc0534c1e2093bdf5a2b66184"
+  dependencies:
+    aframe "^0.5.0"
+    aframe-curve-component "^0.1.0"
+
 aframe-animation-component@^3.2.5:
   version "3.2.5"
   resolved "https://registry.yarnpkg.com/aframe-animation-component/-/aframe-animation-component-3.2.5.tgz#70737c061e81aa0a6656acec8e4a26c7c91a537d"
@@ -37,9 +44,15 @@ aframe-bmfont-text-component@^0.1.4:
     object-assign "^4.1.0"
     three-bmfont-text "^2.1.0"
 
+
 aframe-mountain-component@^0.3.3:
   version "0.3.3"
   resolved "https://registry.yarnpkg.com/aframe-mountain-component/-/aframe-mountain-component-0.3.3.tgz#80e9a3bf198196372fd18e8a419aa064732a63b9"
+
+aframe-curve-component@^0.1.0, aframe-curve-component@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/aframe-curve-component/-/aframe-curve-component-0.1.1.tgz#69663ad859687a85e980302763947446542eae77"
+
 
 aframe-physics-system@^1.3.1:
   version "1.3.1"

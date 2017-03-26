@@ -21,8 +21,8 @@ class Tracks extends BaseComponent {
                     material='side:double; color:#f2ffaa; normalScale:NaN'
                     geometry='mergeTo:null;primitive:plane' />
             );
-            return(<Entity> {tracks} </Entity>);
         }
+        return(<Entity> {tracks} </Entity>);
     }
 }
 export default Tracks;
