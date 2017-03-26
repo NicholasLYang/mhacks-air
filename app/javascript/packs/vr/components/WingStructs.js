@@ -28,10 +28,13 @@ class WingStructs extends BaseComponent {
             position={this.translate(this.props, [0.65, 5, -1.75])}
             geometry="radius: 0.05" />
 
-                <CrossHatch position={this.props.position}/>
+                <CrossHatch position={this.translate(this.props, [0, 0, 0.5])}/>
 
-                <CrossHatch position={this.translate(this.props, [1, 0, 0])}/>
+                <CrossHatch position={this.translate(this.props, [0, 0, -1])}/>
 
+                <CrossHatch position={this.translate(this.props, [0, 0, 5.5])}/>
+
+                <CrossHatch position={this.translate(this.props, [0, 0, 4])}/>
             </Entity>
 
         );
