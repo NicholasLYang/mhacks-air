@@ -113,7 +113,7 @@ class VRScene extends React.Component {
             scale="-1 1 1"
             material="shader:flat;color:#82c4ec"
             geometry="mergeTo:null;primitive:sphere;radius:5000;segmentsHeight:20;segmentsWidth:64" />
-            
+
 
             /*
             <Entity primitive='a-sky'
@@ -125,7 +125,7 @@ class VRScene extends React.Component {
 
             <Entity id="yellow-tracks" position="-30 0.06 2" rotation="90 0 0" scale="1 .4 1" />
 
-            spawnPlane();
+            {spawnPlane()}
 
             <Window position="0,0,0" t="-34.64, 30.61, 110.09"
             rotation="0 60 0"
@@ -179,21 +179,24 @@ var planes = 0;
 
 var timer = setInterval(spawnPlane, 5000);
 
-var spawnPlane = function(){
+var spawnPlane = function() {
     console.log("new plane");
-    planes+=1;
-    var x,z;
+    planes += 1;
+    var x, z;
     var rand = [-200,200,120,-120];
     var r = rand[Math.floor(Math.random() * rand.length)];
     var y = Math.floor(Math.random() * 201 + 200);
-    if (r == -200 || r == 200){       
+    if (r == -200 || r == 200){
         x = r;
         z = Math.floor(Math.random() * 241 - 120);
     } else if (r == 120 || r == -120){
         x = Math.floor(Math.random() * 401 - 200);
         z = r;
     }
-    return (<Plane position={x.toString() + ' ' + y.toString() + ' ' + z.toString()} color="#6438EA" id={"plane-" + (planes).toString()}/>);
+    return (<Plane position={x.toString() +
+                             ' ' + y.toString() +
+                             ' ' + z.toString()}
+            color="#6438EA" id={"plane-" + (planes).toString()}/>);
 };
 
 console.log(spawnPlane());
