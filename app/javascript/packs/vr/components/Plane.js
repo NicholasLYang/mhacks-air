@@ -78,4 +78,10 @@ function taxi(event) {
     }
 }
 
+function circle(event) {
+    if (event.key) {
+        document.querySelector('#plane').emit('circle');
+    }
+}
+
 export default Plane;

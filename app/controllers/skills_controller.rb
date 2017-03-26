@@ -23,9 +23,9 @@ class SkillsController < ApplicationController
 
     # output.add_speech(message) unless message.blank?
     # render json: output.build_response(session_end)
-    output = AlexaRubykit::Response.new
-    session_end = true
-    output.add_speech("Hello World")
-    render json: output.build_response(session_end)
+    #output = AlexaRubykit::Response.new
+    #session_end = true
+    #output.add_speech("Hello World")
+    #render json: output.build_response(session_end)
   end
 end

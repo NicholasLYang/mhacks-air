@@ -4,6 +4,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Plane from './components/Plane';
 import Window from './components/Window.js';
+import Wall from './components/Wall.js';
 import Tracks from './components/Tracks';
 
 class VRScene extends React.Component {
@@ -119,7 +120,6 @@ class VRScene extends React.Component {
             <Window position="0,0,0" t="-34.64, 30.61, 110.09"
             rotation="0 60 0"
             scale="39.03 30 56.11"
-            color="#aaceff"
             id="left-window"/>
 
                 <Window position="0,0,0" t="-8, 30.61, 93.01"
@@ -132,20 +132,20 @@ class VRScene extends React.Component {
             scale="39.03 30 56.11"
             id="right-window"/>
 
-                <Window position="0,0,0" t="-8.08,15.61,126.84"
+                <Wall position="0,0,0" t="-8.08,15.61,126.84"
             rotation="0 0 0"
             scale="73 60 100"
-            id="back-window"/>
+            id="back-wall"/>
 
-                <Window position="0,0,0" t="-7.42,45.39,109.29"
+                <Wall position="0,0,0" t="-7.42,45.39,109.29"
             rotation="90 0 0"
             scale="75.43 34.92 46.21"
-            id="top-window"/>
+            id="top-wall"/>
 
-                <Window position="0,0,0" t="-12,15.25,110.32"
+                <Wall position="0,0,0" t="-12,15.25,110.32"
             rotation="90 0 0"
             scale="75.43 34.92 46.21"
-            id="bottom-window"/>
+            id="bottom-wall"/>
 
 
             <Entity primitive="a-camera"
