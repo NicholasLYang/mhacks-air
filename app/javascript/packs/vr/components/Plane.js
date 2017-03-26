@@ -1,4 +1,5 @@
 import 'aframe';
+import 'aframe-animation-component';
 import {Entity, Scene} from 'aframe-react';
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -18,14 +19,8 @@ class Plane extends BaseComponent {
 
         return (
                 <Entity id = "plane"
-            animation= {{dir: 'normal',
-                         dur: '5000',
-                         from: '-100 5 3',
-                         property: 'position',
-                         startEvents: 'start',
-                         pauseEvents: 'pause',
-                         resumeEvents: '0',
-                         restartEvents: '0', to: '0 5 3'}}>
+            animation__descend="dir: normal; dur: 5000; from: 0 9 0; property: position; startEvents: start; to: 0 0 0"
+            animation__hold="dir: alternate; dur: 10000; easing: easeInOutCirc; from: 100 9 0; property: position; startEvents: hold; loop: true; to: 0 9 0">
 
                 <Wing position={this.props.position}
             color={this.props.color}/>
@@ -48,8 +43,24 @@ class Plane extends BaseComponent {
         );
     }
 
+componentDidMount() {
+        //Event Listeners
+        $(window).keypress(function(e) {
+            //s
+            if (e.which === 115) {
+                document.querySelector('#plane').emit('start');
+            };
+            //h
+            if (e.which === 104) {
+                document.querySelector('#plane').emit('hold');
+            };
+            //t
+            if (e.which === 116) {
+                document.querySelector('#plane').emit('taxi');
+            };
+        });
+    }
 }
-
 
 
 export default Plane;
