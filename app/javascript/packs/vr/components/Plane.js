@@ -1,5 +1,7 @@
 import 'aframe';
 import 'aframe-animation-component';
+import 'aframe-alongpath-component';
+import 'aframe-curve-component';
 import {Entity, Scene} from 'aframe-react';
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -9,28 +11,39 @@ import Wing from './Wing';
 import BaseComponent from './BaseComponent.js';
 
 class Plane extends BaseComponent {
+    constructor(props) {
+        super(props);
+        this.componentDidMount = this.componentDidMount.bind(this);
+        this.setState({position: this.props.position});
+    }
+
     render() {
-
         return (
-                <Entity id = "plane"
-            animation__descend="dir: normal; dur: 5000; from: 0 9 0; property: position; startEvents: start; to: 0 0 0"
-            animation__hold="dir: alternate; dur: 10000; easing: easeInOutCirc; from: 100 9 0; property: position; startEvents: hold; loop: true; to: 0 9 0">
+            <Entity>
+            <Entity id="circle" primitive="a-curve">
+            <Curve-Point position="-50 1 -3" geometry="primitive:box; height:0.1; width:0.1; depth:0.1" material="color:#ff0000" />
+            <Curve-Point position="50 1 3" geometry="primitive:box; height:0.1; width:0.1; depth:0.1" material="color:#ff0000" />
+            </Entity>
+            <Draw-Curve curveref="#circle" material="shader: line; color: blue;"/>
+            <Entity id = "plane"
+            alongpath="path:circle; closed: false; dur: 5000; delay: 4000; startEvents: start">
 
-                <Wing position={this.props.position}
-            color={this.props.color}/>
-                
+            <Wing position={this.props.position}
+            color={this.props.color} />
+
                 <Body position={this.props.position}
             color={this.props.color}/>
 
-            
+
                 <Wheel position={this.props.position}
             id="wheel-1"
             color={this.props.color}/>
-                
+
                 <Wheel position={this.props.position}
             id="wheel-2"
             color={this.props.color} />
-                
+
+            </Entity>
             </Entity>
         );
     }
@@ -52,6 +65,10 @@ class Plane extends BaseComponent {
             };
         });
     }
+}
+
+var circle = function(curX, curY, r){
+    
 }
 
 // Add an event listener

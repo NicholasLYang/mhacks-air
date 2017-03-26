@@ -12,7 +12,7 @@ class VRScene extends React.Component {
     render () {
 
         return (
-            <Scene>
+            <Scene fog="type: linear; color: #AAB; far: 500; near: 0">
             <Entity position="0 0 -7.40">
 
             <Entity primitive='a-entity'
@@ -105,12 +105,20 @@ class VRScene extends React.Component {
             geometry="mergeTo:null;height:0.1"
             id="road" />
 
+            /*
             <Entity primitive='a-sky'
             color="#ECECEC"
             position=""
             scale="-1 1 1"
             material="shader:flat;color:#82c4ec"
             geometry="mergeTo:null;primitive:sphere;radius:5000;segmentsHeight:20;segmentsWidth:64" />
+            */
+
+            <Entity primitive='a-sky'
+            color="#AAB"
+            scale="-1 1 1"
+            material="shader:flat;color:#AAB"
+            geometry="mergeTo:null;primitive:sphere;radius:5000;segmentsHeight:20;segmentsWidth:64"/>
 
             <Entity id="yellow-tracks" position="-30 0.06 2" rotation="90 0 0" scale="1 .4 1" />
 
