@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom';
 import BaseComponent from './BaseComponent.js';
 
 
-class Window extends BaseComponent {
+class Wall extends BaseComponent {
 
     render() {
         var trans = this.props.t.split(",");
@@ -14,10 +14,10 @@ class Window extends BaseComponent {
             scale={this.props.scale}
             rotation={this.props.rotation}
             geometry="mergeTo:null;primitive:plane"
-            material="side:double;opacity:0.5;color:#aaceff;normalScale:{&quot;x&quot;:1,&quot;y&quot;:1}"
+            material="side:double;opacity:0.5;color:#e22aff;normalScale:{&quot;x&quot;:1,&quot;y&quot;:1}"
             id={this.props.id} />
         );
     }
 }
 
-export default Window;
+export default Wall;
