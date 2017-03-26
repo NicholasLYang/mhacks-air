@@ -80,9 +80,11 @@ class Plane extends BaseComponent {
                     dataType: "json",
                     url: "/currentcommand",
                     data: data,
-                    success: success
+                    success: function(data) {
+                        m = 'Data was succesfully captured';
+                    }
                 });
-                var obj = JSON.parse(data);
+                console.log(data);
             };
         });
     }
