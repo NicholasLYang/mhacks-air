@@ -19,12 +19,15 @@ class Plane extends BaseComponent {
     }
 
     render() {
+        var commands = resolve('plane',200,200,50);
         return (
                 <Entity>
-                <Entity primitive="a-curve-point" position="0 0 70"/>
-                {circling(40,40,50)}
+                {circling(-100,-100,40)}
                 <Entity id = {this.props.id} scale="5 5 5"
-            alongpath="curve:#circle; trigger: hold; loop:true; rotate: false; closed:false; dur:5000; inspect:true;" >
+            animation__rotation={commands[0]}
+            animation__gate={commands[1]}
+            animation__taxi={commands[2]}
+            animation__takeoff={commands[3]}>
 
                 <Wing position={this.props.position}
             color={this.props.color}/>
@@ -47,23 +50,59 @@ class Plane extends BaseComponent {
     componentDidMount() {
         //Event Listeners
         $(window).keypress(function(e) {
-            //s
-            if (e.which === 115) {
-                document.querySelector('#plane').emit('start');
+            //l
+            if (e.which === 108) {
+                document.querySelector('#plane').emit('land');
             };
-            //h
-            if (e.which === 104) {
-                document.querySelector('#plane').emit('hold');
+            //g
+            if (e.which === 103) {
+                document.querySelector('#plane').emit('gate');
+            };
+            //p
+            if (e.which === 112) {
+                document.querySelector('#plane').emit('pushback');
             };
             //t
             if (e.which === 116) {
                 document.querySelector('#plane').emit('taxi');
+            };
+            //o
+            if (e.which === 111) {
+                document.querySelector('#plane').emit('takeoff');
+            };
+            //r
+            if (e.which === 114) {
+                document.querySelector('#plane').emit('replay');
+            };
+            //c
+            if (e.which === 99){
+                var data = $.ajax({
+                    dataType: "json",
+                    url: "/currentcommand",
+                    data: data,
+                    success: success
+                });
+                var obj = JSON.parse(data);
             };
         });
     }
 }
 
 export default Plane;
+
+var resolve = function(p,x,y,z){
+    var commands = [];
+    if (x > 0){
+        commands.push(
+            "property: rotation; to: 0 180 0" //rotating
+            ,"from: " + x.toString() + " y " + z.toString() + "; property: position; startEvents: gate; to: -63.8 -20.5 8.32"
+            //gating
+            ,"from: -63.8 -20.5 8.32; property: position; startEvents: taxi; to: 187.9 -20.5 0" //taxi
+            ,"from: 187.9 -20.5 0; property: position; startEvents: takeoff; to: 400 400 90" //takeoff
+        )
+    }
+    return commands
+}
 
 var circling = function(x, z, r){
     var theta = 0;
